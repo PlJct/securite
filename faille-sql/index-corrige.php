@@ -4,8 +4,8 @@
 // #?)
 if(isset($_POST['signin'])){
     $pdo = new PDO ("mysql:host=localhost;dbname=faille", 'root', '');
-    $login = $_POST['login'];
-    $password = $_POST['password'];
+    $login = htmlEntities($_POST['login']);
+    $password = htmlEntities($_POST['password']);
     $selectall = $pdo->query("SELECT * FROM user WHERE login='$login' AND password='$password'");
     $result = $selectall->fetch();
     $counttable = count((is_countable($result)?$result:[]));

@@ -3,7 +3,7 @@ setcookie('pwd', 'admin123');
 
 $pdo = new PDO ("mysql:host=localhost;dbname=faille", 'root', '');
 if(isset($_POST['ajouterMot'])){
-$mot = $_POST['mot'];
+$mot = htmlEntities($_POST['mot']);
 $pdo->query("INSERT INTO livredor VALUES ('','$mot')");
 }
 
